@@ -155,3 +155,31 @@ docker inspect `<container>`
   - `docker run -d -p porta_host:porta_container --name -v nome_do_container diretório_host:diretorio_container --rm nome_imagem`
   - Exemplo:
     - `docker run -d -p 80:80 --name phpmessages_container -v /home/edmar/Documentos/Desenvolvimento/curso_docker/2_volumes/messages:/var/www/html/messages --rm phpmessages`
+
+# Atualizar projeto com Bind Mount
+- `Bind mount` não serve apendas para volumes!
+- Podemos utilizar esta técnica para `atualização em tempo real do projeto`
+- sem ter que refazer o build a cada atualização do mesmo
+- Para isso usamos o nome do diretório e não somente de uma pasta
+  - Exemplo:
+    - `docker run -d -p 80:80 --name phpmessages_container -v /home/edmar/Documentos/Desenvolvimento/curso_docker/2_volumes:/var/www/html --rm phpmessages`
+
+# Criando volum manualmente
+- Podemos criar um volume com o comando: `docker volume create nome_do_volume`
+
+
+# Listar os Volumes
+- comando: `docker volume ls`
+
+# Analizar dados do volume
+- comando: `docker volume inspect nome_do_volume`
+- exemplo:
+  - docker volume inspect phpvolume
+
+# Remover Volume
+- Para remover usamos o comando: `docker volume rm nome_do_volume`
+- Observação que os dados serão removidos todos também, tome cuidado com este comando;
+
+# Remover volume em massa
+comando: `docker volume prune`
+
